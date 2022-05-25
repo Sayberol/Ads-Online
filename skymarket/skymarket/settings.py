@@ -43,12 +43,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "djoser",
-    "rest_framework",
     "corsheaders",
+    "drf_spectacular",
+    "rest_framework",
     "users",
     "ads",
     "redoc",
-    "drf_spectacular",
 ]
 
 
@@ -90,7 +90,7 @@ REST_FRAMEWORK = {
         ],
         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
         'PAGE_SIZE': 4,
-        "DEFAULT_SCHEMA": "drf_spectacular.openapi.AutoSchema"
+        "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 SPECTACULAR_SETTINGS = {
@@ -103,7 +103,7 @@ SPECTACULAR_SETTINGS = {
 DJOSER = {
     'SERIALIZERS': {
             'user_create': 'users.serializers.UserRegistrationSerializer'
-        },
+    },
     'LOGIN_FIELD': 'email'
 }
 
@@ -117,7 +117,7 @@ DATABASES = {
             'NAME': 'skymarket',
             'USER': 'skymarket',
             'PASSWORD': 'skymarket',
-            'HOST': 'localhost',
+            'HOST': 'host.docker.internal',
             'PORT': '5432',
     }
 }
@@ -182,9 +182,6 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = os.environ.get("EMAIL_PORT")
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 TOTAL_ON_PAGE = 4
 
-#AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.User'

@@ -1,16 +1,12 @@
-import datetime
-
-from django.conf import settings
 from django.db import models
-from django.forms import DateTimeInput
 
-from users.models import User
+from skymarket import settings
 
 
 class Ad(models.Model):
-    title = models.CharField(max_length=20, default="test")
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    price = models.PositiveIntegerField(default=3)
+    title = models.CharField(max_length=200)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    price = models.PositiveIntegerField()
     description = models.TextField(max_length=1000, null=True)
     created_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='ads/', null=True, blank=True)
@@ -25,7 +21,7 @@ class Ad(models.Model):
 
 class Comment(models.Model):
     text = models.TextField(max_length=1000, null=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     ad = models.ForeignKey(Ad, on_delete=models.SET_NULL, null=True, blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
