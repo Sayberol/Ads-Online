@@ -117,7 +117,7 @@ DATABASES = {
             'NAME': 'skymarket',
             'USER': 'skymarket',
             'PASSWORD': 'skymarket',
-            'HOST': 'host.docker.internal',
+            'HOST': '127.0.0.1',
             'PORT': '5432',
     }
 }
