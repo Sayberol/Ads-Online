@@ -22,7 +22,7 @@ from users.managers import UserManager
 
 
 class User(AbstractBaseUser):
-    filter_name = models.CharField(max_length=200)
+    first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     phone = models.CharField(max_length=12)
     email = models.EmailField(max_length=100, unique=True)
